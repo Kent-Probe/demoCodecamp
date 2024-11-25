@@ -1,0 +1,70 @@
+---
+type Props = {
+    navItems: Array<{name: string, link: string}>;
+}
+const { navItems } = Astro.props;
+---
+
+<header>
+    <nav>
+        {navItems.map((item, index) => {
+            return (
+                <div>
+                    {index !== 0 && <span>/</span>}
+                    <a href={item.link}>{item.name}</a>
+                </div>
+            )
+        })}
+    </nav>
+</header>
+
+<style>
+    header {
+        height: 6.9375rem;
+        margin-bottom: 2rem;
+        display: flex;
+        padding: 0.5rem var(--Scales-Scale-01, 0.75rem) 0.625rem var(--Scales-Scale-01, 0.75rem);
+        align-items: center;
+        gap: 0.125rem;
+
+        border-bottom: 1px solid var(--Border-Default-Tertiary, #94A1B2);
+    }
+
+    nav{
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+
+        & > div{
+            display: flex;
+            gap: 0.625rem;
+            font-size: 4rem;
+            font-weight: 700;
+            align-items: center;
+        }
+    }
+
+    a{
+        display: flex;
+        padding: 0.625rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.625rem;
+        border-radius: 0.2rem;
+
+
+        color: rgba(127, 90, 240, 0.80);
+        font-family: var(--Fonts-Geometric-Sans-Serif, Poppins);
+        font-size: var(--Subtitle-Size-Base, 2rem);
+        font-style: normal;
+        font-weight: var(--Number-Weight-Weight-Bold, 700);
+        line-height: 120%; /* 2.4rem */
+        letter-spacing: 0.1875rem;
+        text-transform: capitalize;
+
+        &:hover{
+            background: #fff;
+        }
+    }
+</style>

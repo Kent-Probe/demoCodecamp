@@ -1,0 +1,72 @@
+---
+import CardActivity from "../../../components/CardActivity.astro"
+import HeaderTitle from "../../../components/HeaderTitle.astro"
+import MenuHeader from "../../../components/MenuHeader.astro"
+import LayoutPrincipal from "../../../layouts/LayoutPrincipal.astro"
+
+const navItems = [
+    {
+        name: 'Campus',
+        link: '/campus'
+    },
+    {
+        name: 'Todos los cursos',
+        link: '/campus/allCourses'
+    },
+    {
+        name: 'Curso',
+        link: '/campus/course'
+    }
+]
+---
+
+<LayoutPrincipal title="Curso =>">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <HeaderTitle title="Básico" text="4/4"/>
+            <div class="content">
+                <CardActivity link="/campus/course/activity" title="Hola mundo" approve />
+                <CardActivity link="/campus/course/activity" title="Variables" approve />
+                <CardActivity link="/campus/course/activity" title="Constantes" approve />
+                <CardActivity link="/campus/course/activity" title="Argumentos" approve />
+            </div>
+            <HeaderTitle title="Intermedio" text="0/2"/>
+            <div class="content">
+                <CardActivity link="/campus/course/activity" title="Operadores ternarios" />
+                <CardActivity link="/campus/course/activity" title="Funciones anonimas" />
+            </div>
+            <HeaderTitle title="Avanzado" text="0/2"/>
+            <div class="content">
+                <CardActivity link="/campus/course/activity" title="Programacion asincroníca" />
+                <CardActivity link="/campus/course/activity" title="Generación y uso de secuencias asincrónicas" />
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        overflow-y: auto;
+        width: 80%;
+
+        & > div{
+            width: calc(100% - 5rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+
+    .content{
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+</style>

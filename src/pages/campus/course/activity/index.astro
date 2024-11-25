@@ -1,0 +1,125 @@
+---
+import Play from "../../../../assets/icon/Play.astro"
+import Editor from "../../../../components/Editor.astro"
+import MenuHeader from "../../../../components/MenuHeader.astro"
+import LayoutPrincipal from "../../../../layouts/LayoutPrincipal.astro"
+
+const navItems = [
+    {
+        name: 'Campus',
+        link: '/campus'
+    },
+    {
+        name: 'Mis cursos',
+        link: '/campus/myCourses'
+    },
+    {
+        name: 'Curso',
+        link: '/campus/course'
+    },
+    {
+        name: 'Hola mundo',
+        link: '/campus/course/activity'
+    }
+]
+---
+
+<LayoutPrincipal title="Curso => Hola mundo">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <div class="code">
+                <Editor />
+            </div>
+            <div class="btns">
+                <button class="btn btn-play"><Play/>Ejecutar</button>
+                <button class="btn btn-show">Mostrar respuesta</button>
+                <button class="btn btn-improvement">Mejorar Código</button>
+                <button class="btn btn-explain">Explicar Código</button>
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(100% - 5rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+    .code{
+        width: 70%;
+        height: auto;
+    }
+    .btns{
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn{
+        width: 100%;
+        min-height: 60px;
+        cursor: pointer;
+        display: flex;
+        padding: 1rem 1.5rem;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        align-self: stretch;
+
+        border-radius: 4px;
+        border: 2px transparent;
+
+        color: #FFFFFE;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        letter-spacing: -0.025rem;
+
+        transition: border 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+        &.btn-play{
+            background: #2CB67D;
+            &:hover{
+                background: #1E8E5A;
+            }
+        }
+
+        &.btn-show{
+            background: #523AC8;
+            &:hover{
+                background: #3D2F8B;
+            }
+        }
+
+        &.btn-improvement{
+            border: 2px solid var(--Border-Brand-Primary, #6F65EF);
+            background: var(--Background-Brand-2-Primary, #A6ADFB);
+            &:hover{
+                background: var(--Background-Brand-2-Secondary, #8D94F3);
+            }
+        }
+
+        &.btn-explain{
+            border: 2px solid var(--Border-Brand-Primary, #6F65EF);
+            background: var(--Background-Brand-2-Primary, #A6ADFB);
+            &:hover{
+                background: var(--Background-Brand-2-Secondary, #8D94F3);
+            }
+        }
+    }
+</style>

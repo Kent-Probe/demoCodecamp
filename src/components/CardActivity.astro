@@ -1,0 +1,46 @@
+---
+import Approve from "../assets/icon/approve.astro";
+
+type Pros = {
+    title: string;
+    approve: boolean;
+    link: string;
+}
+const { title, approve, link } = Astro.props
+---
+<a href={link}>
+    <h1>{title}</h1>
+    <Approve isApproved={approve} />
+</a>
+
+<style>
+    a{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        padding-left: 1rem;
+
+        border-radius: var(--Radius-100, 0.25rem);
+        border: 1px solid var(--Border-Default-Tertiary, #94A1B2);
+        cursor: pointer;
+        text-replace: border 0.3s ease-in-out;
+
+        &:hover{
+            border: 1px solid var(--Border-Default-Primary, #523AC8);
+        }
+
+
+        & > h1 {
+            color: var(--Text-Default-Primary, #FFFFFE);
+            font-family: var(--Fonts-Geometric-Sans-Serif, Poppins);
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+            letter-spacing: -0.025rem;
+        }
+    }
+</style>

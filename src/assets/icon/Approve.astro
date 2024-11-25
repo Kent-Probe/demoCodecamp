@@ -1,0 +1,11 @@
+---
+type Props = {
+    isApproved: boolean;
+}
+const { isApproved } = Astro.props
+---
+
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="50" height="50" fill={isApproved ? "#2CB67D" : "transparent"}/>
+<path d="M25 9C16.168 9 9 16.168 9 25C9 33.832 16.168 41 25 41C33.832 41 41 33.832 41 25C41 16.168 33.832 9 25 9ZM25 37.8C17.944 37.8 12.2 32.056 12.2 25C12.2 17.944 17.944 12.2 25 12.2C32.056 12.2 37.8 17.944 37.8 25C37.8 32.056 32.056 37.8 25 37.8ZM32.344 17.928L21.8 28.472L17.656 24.344L15.4 26.6L21.8 33L34.6 20.2L32.344 17.928Z" fill="white"/>
+</svg>

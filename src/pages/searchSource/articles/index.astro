@@ -1,0 +1,59 @@
+---
+import CardSource from "../../../components/CardSource.astro"
+import MenuHeader from "../../../components/MenuHeader.astro"
+import SearchComponente from "../../../components/SearchComponente.astro"
+import LayoutPrincipal from "../../../layouts/LayoutPrincipal.astro"
+
+
+const navItems = [
+    {
+        name: 'Busqueda de recursos',
+        link: '/searchSource'
+    },
+    {
+        name: 'Articulos',
+        link: '/searchSource/articles'
+    }
+]
+---
+
+<LayoutPrincipal title="Articulos">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <SearchComponente />
+            <div class="content-cards">
+                <CardSource title="¿Qué es React y para qué sirve?" link="https://blog.hubspot.es/website/que-es-react" date="Fecha: 03/01/2024" />
+                <CardSource title="Astro x Cloudinary SDK" link="https://astro.build/blog/cloudinary-astro-sdk-launch/" date="Fecha: October 3, 2024" />
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+
+
+    .content-cards{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-items: start;
+        align-items: start;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+</style>

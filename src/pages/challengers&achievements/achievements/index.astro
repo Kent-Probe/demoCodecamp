@@ -1,0 +1,59 @@
+---
+import ImageL1 from "../../../assets/images/image-l-1.webp"
+import ImageL2 from "../../../assets/images/image-l-2.webp"
+import CardAchivement from "../../../components/CardAchivement.astro"
+import MenuHeader from "../../../components/MenuHeader.astro"
+import LayoutPrincipal from "../../../layouts/LayoutPrincipal.astro"
+
+
+const navItems = [
+    {
+        name: 'Logros y retos',
+        link: '/challengers&achievements'
+    },
+    {
+        name: 'Logros',
+        link: '/challengers&achievements/achievements'
+    }
+]
+---
+
+<LayoutPrincipal title="Logros">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <div class="content-cards">
+                <CardAchivement image={ImageL1} title="nivel 5" description="Felicidades, has alcanzado el nivel de maestro " />
+                <CardAchivement image={ImageL2} title="nivel 4" description="Felicidades, has alcanzado el nivel de maestro " />
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+
+
+    .content-cards{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-items: start;
+        align-items: start;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+</style>

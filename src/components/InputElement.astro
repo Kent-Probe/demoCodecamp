@@ -1,0 +1,53 @@
+---
+type Props = {
+    label: string;
+    placeholder: string;
+    type: string;
+    disable: boolean;
+    isProfile: boolean;
+}
+const { label, placeholder, type, disable, isProfile } = Astro.props;
+---
+
+<div class="inputfield">
+    <label>{label}</label>
+    {isProfile && <input data-input-profile type={type} disabled={disable} placeholder={placeholder} />}
+    {!isProfile && <input data-input-change type={type} disabled={disable} placeholder={placeholder} />}
+</div>
+
+  <style>
+    .inputfield {
+      display: flex;
+      gap: 0.4rem;
+      flex-direction: column;
+      width: 100%;
+      & > label{
+        width: 100%;
+        color: var(--Text-Default-Primary, #FFFFFE);
+        font-family: var(--Fonts-Geometric-Sans-Serif, Poppins);
+        font-size: var(--Body-Size-Base, 1rem);
+        font-style: normal;
+        font-weight: var(--Body-Font-Weight-Regular, 400);
+        line-height: 120%;
+        letter-spacing: -0.02rem;
+      }
+
+      & > input{ 
+        width: 100%;
+        height: 50px;
+        padding-left: 16px;
+        padding-right: 16px;
+        background: #1E1E24;
+        border-radius: 4px;
+        color: #FFFFFE;
+        font-size: 1rem;
+        font-family: Poppins;
+        font-weight: 400;
+        line-height: 24px;
+        border: none;
+        &:disabled{
+          background: #2C2C2E;
+        }
+    }
+}
+</style>

@@ -1,0 +1,120 @@
+---
+import { Image } from "astro:assets"
+import ImageU1 from "../../../assets/images/image-u-1.webp"
+import HeaderTitle from "../../../components/HeaderTitle.astro"
+import InputElement from "../../../components/InputElement.astro"
+import MenuHeader from "../../../components/MenuHeader.astro"
+import LayoutPrincipal from "../../../layouts/LayoutPrincipal.astro"
+
+const navItems = [
+    {
+        name: 'Usuarios',
+        link: '/username'
+    },
+    {
+        name: 'Perfil de usuario',
+        link: '/username/profile'
+    },
+]
+---
+<script>
+    const onClickProfile = () => {
+        const inputEmail = document.querySelectorAll("[data-input-profile]");
+        inputEmail.forEach((input) => {
+            if (input.disabled) input.removeAttribute("disabled");
+            else input.setAttribute("disabled", true);
+        });
+    }
+
+    const onClickChange = () => {
+        const inputPassword = document.querySelectorAll("[data-input-change]");
+        const password1 = inputPassword[0].value; 
+        const password2 = inputPassword[1].value;
+        if (password1 === password2) {
+            inputPassword.forEach((input) => {
+                if (input.disabled) input.removeAttribute("disabled");
+                else input.setAttribute("disabled", true);
+            });
+        } else {
+            alert("Las contraseñas no coinciden");
+        }
+    }
+    const buttonChanges = document.querySelectorAll("[data-click-change]");
+    buttonChanges.forEach((button) => {
+        button.addEventListener("click", onClickChange);
+    });
+    
+    const buttons = document.querySelectorAll("[data-click-profile]");
+    buttons.forEach((button) => {
+        button.addEventListener("click", onClickProfile);
+    });
+</script>
+
+<LayoutPrincipal title="Perfil de usuario">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div class="container">
+            <HeaderTitle isProfile title="Información del perfil" hasIcon />
+            <div class="content-profile">
+                <div class="content-img">
+                    <Image src={ImageU1} alt="Imagen de perfil" />
+                </div>
+                <div class="content-info">
+                    <InputElement isProfile label="Correo electronico" type="email" placeholder="ejemplo@unadvirtual.edu.co" disable />
+                    <InputElement isProfile label="Nombres" type="text" placeholder="Juan Martinez" disable />
+                    <InputElement isProfile label="Apellidos" type="text" placeholder="Garabito" disable />
+                </div>
+            </div>
+            <HeaderTitle title="Cambiar contraseña" hasIcon />
+            <div class="content-change-password">
+                <InputElement label="Contraseña" type="password" placeholder="*******" disable />
+                <InputElement label="Repetir contraseña" type="password" placeholder="*******" disable />
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > .container{
+            width: calc(100% - 4rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+
+    .content-profile{
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+        width: 100%;
+        & > .content-img{
+            width: auto;
+            height: auto;
+            & > img {
+                width: 15rem;
+                height: 15rem;
+            }
+        }
+
+        & > .content-info{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 40rem;
+        }
+    }
+    .content-change-password{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+    }
+</style>
