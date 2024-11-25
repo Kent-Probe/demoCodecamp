@@ -1,0 +1,43 @@
+---
+import ImageM4 from "../../assets/images/image-m-4.webp";
+import ImageM5 from "../../assets/images/image-m-5.webp";
+import ImageM6 from "../../assets/images/image-m-6.webp";
+import CardMenuContent from "../../components/CardMenuContent.astro";
+import MenuHeader from "../../components/menuHeader.astro";
+import LayoutPrincipal from "../../layouts/LayoutPrincipal.astro";
+
+const navItems = [
+    {
+        name: 'Busqueda de recursos',
+        link: '/searchSource'
+    },
+]
+---
+
+<LayoutPrincipal title="Busqueda de recursos">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <CardMenuContent href="/searchSource/articles" title="Articulos" img={ImageM4} description="Encuentra contenido relevante" />
+            <CardMenuContent href="/searchSource/tutorials" title="Tutoriales" img={ImageM5} description="Recursos multimedia" />
+            <CardMenuContent href="/searchSource/extra" title="Extras" img={ImageM6} description="Recuros extras" />
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+</style>

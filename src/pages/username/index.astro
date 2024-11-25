@@ -1,0 +1,39 @@
+---
+import ImageM7 from "../../assets/images/image-m-7.webp";
+import CardMenuContent from "../../components/CardMenuContent.astro";
+import MenuHeader from "../../components/menuHeader.astro";
+import LayoutPrincipal from "../../layouts/LayoutPrincipal.astro";
+
+const navItems = [
+    {
+        name: 'Usuarios',
+        url: '/username'
+    },
+]
+---
+
+<LayoutPrincipal title="Usuario">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <CardMenuContent href="/username/profile" title="Información del perfil" img={ImageM7} description="El usuario podra verificar datos de contacto e información personal." />
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+</style>

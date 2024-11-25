@@ -1,0 +1,41 @@
+---
+import ImageM1 from "../../assets/images/image-m-1.webp";
+import ImageM2 from "../../assets/images/image-m-2.webp";
+import CardMenuContent from "../../components/CardMenuContent.astro";
+import MenuHeader from "../../components/menuHeader.astro";
+import LayoutPrincipal from "../../layouts/LayoutPrincipal.astro";
+
+const navItems = [
+    {
+        name: 'Campus',
+        link: '/campus'
+    },
+]
+---
+
+<LayoutPrincipal title="campus">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <CardMenuContent href="campus/myCourses" title="Mis Cursos" img={ImageM1} description="Ingresa a tus cursos" />
+            <CardMenuContent href="campus/allCourses" title="Todos los cursos" img={ImageM2} description="Todos los cursoso disponibles" />
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+</style>

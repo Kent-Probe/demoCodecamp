@@ -1,0 +1,75 @@
+---
+import Logo from "../assets/icon/logo.astro";
+type Props = {
+    title: string;
+    hasIcon: boolean;
+    text: string;
+    isProfile: boolean;
+}
+const {title, hasIcon, text, onClick, isProfile} = Astro.props
+
+---
+
+<div class="content">
+    <header>
+        <div class="svg">
+            <Logo />
+        </div>
+        <h1>{title}</h1>
+    </header>
+    {hasIcon &&
+        (isProfile ?
+            <svg data-click-profile xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <path d="M25 46.25H45M31.25 10L40 17.5M8.75 32.5L33.3987 6.99047C36.0526 4.33651 40.3556 4.33651 43.0095 6.99047C45.6635 9.64443 45.6635 13.9473 43.0095 16.6013L17.5 41.25L5 45L8.75 32.5Z" stroke="#E0E4FF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> :
+            <svg data-click-change xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <path d="M25 46.25H45M31.25 10L40 17.5M8.75 32.5L33.3987 6.99047C36.0526 4.33651 40.3556 4.33651 43.0095 6.99047C45.6635 9.64443 45.6635 13.9473 43.0095 16.6013L17.5 41.25L5 45L8.75 32.5Z" stroke="#E0E4FF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        )
+    }
+    {!hasIcon && <p>{text}</p>}
+</div>
+
+<style>
+    .content{
+        display: flex;
+        width: 100%;
+        padding-bottom: 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+
+        border-bottom: 2px solid var(--Border-Default-Secundary, #FFFFFE);
+    }
+    header {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        & > .svg{
+            width: 4.375rem;
+            height: 4.375rem;
+        }
+    }
+    h1{
+        color: #E0E4FF;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%; /* 2.4rem */
+        letter-spacing: -0.04rem;
+    }
+    p{
+        color: #E0E4FF;
+        font-family: Poppins;
+        font-size: 1.8rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        letter-spacing: -0.04rem;
+    }
+    svg{
+        cursor: pointer;
+    }
+</style>

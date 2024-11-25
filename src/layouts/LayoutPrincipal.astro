@@ -1,0 +1,30 @@
+---
+import Menu from '../components/Menu.astro';
+import Layout from './Layout.astro';
+
+
+type Props = {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+    <main transition:animate="fade">
+        <Menu />
+        <slot />
+    </main>
+</Layout>
+
+<style>
+    main{
+        background: var(--Background-Default-Primary, #16161A);
+        color: var(--Text-Default-Primary, #FFFFFE);
+        width: 100vw;
+        height: 100vh;
+        
+        display: flex;
+        flex-direction: row;
+    }
+</style>

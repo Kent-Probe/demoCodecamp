@@ -1,0 +1,89 @@
+---
+type Props = {
+    href: string;
+    hasFooter: boolean;
+    title: string;
+    level: string;
+    pts: string;
+    completed: string;
+}
+
+const {href, hasFooter, completed, level, pts, title} = Astro.props
+
+---
+
+<a href={href}>
+    <div class="header">
+        <h1>{title}</h1>
+    </div>
+    <div class="content">
+        <p>{level}</p>
+        <p>{pts}</p>
+    </div>
+    {hasFooter &&
+        <div class="footer">
+            <p>{completed}</p>
+        </div>
+    }
+</a>
+
+<style>
+    a {
+        font-family: Poppins;
+        padding: 1.25rem 1.875rem;
+        width: calc(50% - 1.25rem);
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0.625rem;
+        flex-shrink: 0;
+
+        border-radius: 0.625rem;
+        background-color: var(--Background-Brand-Primary, #523AC8);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover{
+            background-color: var(--Background-Brand-Secondary, #3D2F8B);
+        }
+    }
+
+    .header{
+        width: 100%;
+
+        color: #E0E4FF;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        letter-spacing: -0.04rem;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0.2rem;
+
+        color: #E0E4FF;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        letter-spacing: -0.025rem;
+    }
+
+    .footer{
+        width: 100%;
+        & > P{
+            display: block;
+            width: 100%;
+            text-align: end;
+    
+            color: #E0E4FF;
+            font-size: 0.8rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+        }
+    }
+</style>

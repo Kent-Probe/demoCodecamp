@@ -1,0 +1,41 @@
+---
+import ImageM3 from "../../assets/images/image-m-3.webp";
+import ImageM8 from "../../assets/images/image-m-8.webp";
+import CardMenuContent from "../../components/CardMenuContent.astro";
+import MenuHeader from "../../components/menuHeader.astro";
+import LayoutPrincipal from "../../layouts/LayoutPrincipal.astro";
+
+const navItems = [
+    {
+        name: 'Logros y retos',
+        link: '/challengers&achievements'
+    },
+]
+---
+
+<LayoutPrincipal title="Logros y retos">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <CardMenuContent href="challengers&achievements/achievements" title="Logros" img={ImageM8} description="Tus logros conseguidos" />
+            <CardMenuContent href="challengers&achievements/challengers" title="Retos" img={ImageM3} description="Retos que te faltan y que tienes" />
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+</style>

@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets"
+import Logo from "../assets/images/logo.webp"
+
+const menu = [
+  {
+    name: 'Campus',
+    url: '/campus'
+  },
+  {
+    name: 'Logros y retos',
+    url: '/challengers&achievements'
+  },
+  {
+    name: 'Busqueda de recursos',
+    url: '/searchSource'
+  },
+  {
+    name: 'Usuarios',
+    url: '/username'
+  }
+]
+---
+
+<nav>
+    <Image src={Logo} alt="Logo de la aplicacion" />
+    <div>
+        {menu.map(item => {
+            return (
+                <a href={item.url}>{item.name}</a>
+            )
+        })}
+    </div>
+</nav>
+
+<style>
+    nav{
+        padding: 2.4rem;
+        width: 20%;
+        
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        gap: 6rem;
+        
+        font-family: Poppins;
+        background: linear-gradient(0deg, #192B42 0%, #192B42 100%), var(--Background-Default-Primary, #16161A);
+
+        & > div{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+    }
+    
+
+    a{
+        width: 100%;
+        text-align: center;
+        color: var(--Text-Default-Primary, #FFFFFE);
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 1rem 3rem;
+        border-radius: 0.5rem;
+        background: var(--Background-Brand-Primary, #523AC8);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover{
+            background: var(--Background-Brand-Secondary, #3D2F8B);
+        }
+    }
+
+</style>

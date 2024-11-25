@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+type Props = {
+    title: string;
+    description: string;
+    img: ImageMetadata;
+    hasFooter: boolean;
+    textFooter: string;
+}
+const {title, description, img, hasFooter, textFooter} = Astro.props
+---
+
+<article>
+    <header>
+        <Image src={img} alt={"imagen de logro"}/>
+    </header>
+    <div class="content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+    </div>
+    {hasFooter &&
+        <footer>
+            <p>{textFooter}</p>
+        </footer>
+    }
+</article>
+
+
+<style>
+    article {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 1.25rem;
+        padding: 1rem;
+        border-radius: 0.625rem;
+        background-color: var(--Background-Brand-Primary, #523AC8);
+        transition: background-color 0.3s ease-in-out;
+        &:hover{
+            background-color: var(--Background-Brand-Secondary, #3D2F8B);
+        }
+    }
+    header, footer {
+        width: auto;
+        height: 9rem;
+        & > P {
+            display: grid;
+            place-items: center;
+            height: 100%;
+            font-size: 1rem !important;
+            font-weight: 300 !important;
+        }
+        & > img{
+            filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+    }
+    .content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0.625rem;
+    }
+    h3 {
+        color: #FFF;
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%; /* 2.4rem */
+        letter-spacing: -0.04rem;
+    }
+    p {
+        color: #FFF;
+        font-family: var(--Fonts-Geometric-Sans-Serif, Poppins);
+        font-size: var(--Body-Size-Large, 1.25rem);
+        font-style: normal;
+        font-weight: var(--Body-Font-Weight-Regular, 400);
+        line-height: 120%; /* 1.5rem */
+        letter-spacing: -0.025rem;
+    }
+</style>

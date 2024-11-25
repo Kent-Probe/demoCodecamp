@@ -1,0 +1,60 @@
+---
+import CardSource from "../../../components/CardSource.astro"
+import MenuHeader from "../../../components/MenuHeader.astro"
+import SearchComponente from "../../../components/SearchComponente.astro"
+import LayoutPrincipal from "../../../layouts/LayoutPrincipal.astro"
+
+
+const navItems = [
+    {
+        name: 'Busqueda de recursos',
+        link: '/searchSource'
+    },
+    {
+        name: 'Extras',
+        link: '/searchSource/extra'
+    }
+]
+---
+
+<LayoutPrincipal title="Articulos">
+    <section>
+        <MenuHeader navItems={navItems} />
+        <div>
+            <SearchComponente />
+            <div class="content-cards">
+                <CardSource title="Documentacion de C#" link="https://learn.microsoft.com/es-es/dotnet/csharp/" />
+                <CardSource title="Documentacion de Astro" link="https://docs.astro.build/en/getting-started/" />
+                <CardSource title="Documentacion de Java 27" link="https://docs.oracle.com/en/java/javase/23/index.html" />
+            </div>
+        </div>
+    </section>
+</LayoutPrincipal>
+
+<style>
+    section{
+        width: 80%;
+
+        & > div{
+            width: calc(50% + 20rem);
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem;
+        }
+    }
+
+
+    .content-cards{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-items: start;
+        align-items: start;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+</style>
